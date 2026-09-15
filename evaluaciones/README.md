@@ -9,13 +9,44 @@ La asignatura considera:
 
 ## Evaluaciones parciales
 
-| Evaluación | Situación evaluativa | Peso dentro del componente parcial |
-| --- | --- | ---: |
-| **Parcial 1 · Diseñando el Modelo** | Ejecución práctica sin presentación | 30% |
-| **Parcial 2 · Construcción de MER Normalizado, Modelo Relacional e informes interactivos con formulario en Oracle APEX** | Ejecución práctica sin presentación | 40% |
-| **Parcial 3 · Consultas SQL y Creación de Dashboard** | Ejecución práctica sin presentación | 30% |
+| Evaluación | Situación evaluativa | Peso dentro del componente parcial | Cronograma institucional |
+| --- | --- | ---: | --- |
+| **Parcial 1 · Construcción de MER** | Ejecución práctica sin presentación | 30% | Semana 5 · 07-09-2026 a 12-09-2026 |
+| **Parcial 2 · Construcción de MER Normalizado, Modelo Relacional e informes interactivos con formulario en Oracle APEX** | Ejecución práctica sin presentación | 40% | Semana 10 · 12-10-2026 a 17-10-2026 |
+| **Parcial 3 · Consultas SQL y Creación de Dashboard** | Ejecución práctica sin presentación | 30% | Semana 17 · 30-11-2026 a 05-12-2026 |
 
 El conjunto de parciales aporta el **60% de la nota final**.
+
+### Parcial 1 · estado y contrato oficial
+
+La EP1 evalúa el cierre de **RA1 · Modelamiento conceptual** mediante una ejecución práctica individual de **5 horas pedagógicas** en Oracle SQL Developer Data Modeler.
+
+Los cinco indicadores del RA1 tienen igual ponderación dentro de la evaluación:
+
+- entidades fuertes y débiles — 20%;
+- atributos opcionales y obligatorios — 20%;
+- identificadores únicos — 20%;
+- relaciones y cardinalidades — 20%;
+- Modelo Entidad Relación Extendido (MERE) — 20%.
+
+La entrega oficial se realiza vía AVA e incluye el proyecto comprimido del modelador y un documento Word de respaldo con la imagen del MER.
+
+→ [Contrato, alcance y trazabilidad de Evaluación Parcial 1](parcial-1/README.md)
+
+### Regularización de la sección 005D
+
+El docente reemplazante asumió la sección desde el **8 de septiembre de 2026**, por lo que la ejecución real de la asignatura presenta un desfase respecto del cronograma institucional base.
+
+La EP1, originalmente programada para semana 5, se aplica durante la semana siguiente como parte de la regularización. Este desfase **no modifica RA, IL, IE, ponderaciones ni alcance técnico de la evaluación**.
+
+La secuencia de recuperación es:
+
+```text
+cierre de RA1
+→ EP1
+→ transición a RA2
+→ normalización
+```
 
 ## Evaluación Final Transversal
 
@@ -52,10 +83,6 @@ flowchart LR
     P3 --> EFT
 ```
 
-## Fechas
+## Regla de publicación
 
-**Pendientes del cronograma oficial.**
-
-No se registrarán semanas ni fechas específicas de evaluaciones hasta recibir y conciliar el cronograma institucional.
-
-Cuando esté disponible se documentará aquí y en `semanas/`, evitando mantener calendarios paralelos inconsistentes.
+Los metadatos, criterios y material pedagógico pueden mantenerse en este repositorio público. Los **enunciados activos**, anexos de evaluación y **soluciones de referencia** no se publican aquí mientras una evaluación se encuentre en aplicación; AVA conserva la autoridad operacional para su distribución y recepción.
