@@ -18,11 +18,12 @@ Repositorio oficial de apoyo para la sección **BDY1101-005D** del período acad
 
 ## Acceso rápido
 
-- [`semanas/`](semanas/) — organización cronológica del semestre. El mapeo oficial semana ↔ actividad queda pendiente hasta recibir el cronograma institucional.
+- [`semanas/`](semanas/) — cronograma institucional y ejecución real de la sección.
 - [`docs/`](docs/) — conocimiento canónico de la asignatura: PDA, resultados de aprendizaje y ruta de aprendizaje.
 - [`labs/`](labs/) — laboratorios prácticos reproducibles y evidencia de trabajo.
 - [`ejercicios/`](ejercicios/) — ejercicios, talleres y desafíos complementarios.
 - [`evaluaciones/`](evaluaciones/) — estructura de evaluaciones, ponderaciones y preparación.
+- [`evaluaciones/parcial-1/`](evaluaciones/parcial-1/) — contrato académico y trazabilidad de EP1.
 - [`recursos/`](recursos/) — material complementario y referencias.
 - [`site/`](site/) — fuente mantenible del portal web del curso.
 - [**Sitio del curso**](https://cmartinezs.github.io/BDY1101-005D-BASE-DE-DATOS-APLICADA-I-2026-2/) — publicación derivada desde `gh-pages`.
@@ -89,7 +90,7 @@ La ruta oficial se organiza en tres experiencias.
 3. **Act. 1.3** · Relacionando las entidades del modelo.
 4. **Act. 1.4** · Extendiendo el modelo.
 5. **Evaluación Formativa 1** · Relacionando entidades y extendiendo el modelo conceptual.
-6. **Evaluación Parcial 1** · Diseñando el Modelo.
+6. **Evaluación Parcial 1** · Construcción de MER.
 
 ### EA2 · Construyendo un modelo de datos normalizado
 
@@ -121,13 +122,32 @@ La nota final se compone de:
 
 Dentro del componente parcial:
 
-| Evaluación | Peso dentro de evaluaciones parciales |
-| --- | ---: |
-| Evaluación Parcial 1 · Diseñando el Modelo | 30% |
-| Evaluación Parcial 2 · MER Normalizado + Modelo Relacional + APEX | 40% |
-| Evaluación Parcial 3 · Consultas SQL + Dashboard | 30% |
+| Evaluación | Peso dentro de evaluaciones parciales | Cronograma institucional |
+| --- | ---: | --- |
+| Evaluación Parcial 1 · Construcción de MER | 30% | Semana 5 · 07-09-2026 a 12-09-2026 |
+| Evaluación Parcial 2 · MER Normalizado + Modelo Relacional + APEX | 40% | Semana 10 · 12-10-2026 a 17-10-2026 |
+| Evaluación Parcial 3 · Consultas SQL + Dashboard | 30% | Semana 17 · 30-11-2026 a 05-12-2026 |
 
 → [Detalle de evaluaciones](evaluaciones/README.md)
+
+## Estado actual de la sección
+
+La sección **005D** fue asumida por el docente reemplazante desde el **8 de septiembre de 2026** y continuará con él por el resto del semestre.
+
+Esto produce un desfase operativo respecto del cronograma institucional base. La recuperación se gestiona sin alterar la secuencia curricular:
+
+```text
+cierre de RA1
+→ aplicación efectiva de EP1
+→ verificación de evidencia
+→ inicio formal de RA2 / normalización
+```
+
+Durante la **semana 6 (14-09-2026 a 19-09-2026)** el foco real es cerrar RA1 mediante la Evaluación Parcial 1, originalmente prevista para semana 5, y luego continuar con normalización.
+
+→ [Semana 05 · plan y transición docente](semanas/semana-05/README.md)
+
+→ [Semana 06 · ejecución real y regularización](semanas/semana-06/README.md)
 
 ## Material institucional recibido
 
@@ -135,23 +155,10 @@ La carpeta `PDA` del Drive institucional contiene:
 
 - el PDA oficial de BDY1101;
 - carpetas completas para EA1, EA2 y EA3;
-- presentaciones, talleres, quizzes y otros recursos asociados a las actividades.
+- presentaciones, talleres, quizzes y otros recursos asociados a las actividades;
+- antecedentes oficiales de evaluaciones y cronograma.
 
-Por ejemplo, la **Actividad 1.1** ya contiene material de introducción a bases de datos, elementos de un modelo conceptual, talleres de reconocimiento de información e identificación de entidades, además de un quiz.
-
-El repositorio **no copia automáticamente archivos institucionales ni temporales**. Se incorpora conocimiento derivado y material docente cuando corresponde, manteniendo Drive como fuente de archivos originales.
-
-## Cronograma
-
-**Estado: pendiente de recepción.**
-
-El PDA define experiencias, actividades, indicadores y horas pedagógicas, pero no reemplaza el cronograma oficial del semestre. Por esa razón:
-
-- no se inventarán fechas de actividades o evaluaciones;
-- `semanas/` queda preparado para recibir la planificación cronológica real;
-- cuando llegue el cronograma se conciliará `semana ↔ actividad ↔ RA/IL ↔ evaluación`.
-
-→ [Estado del cronograma](semanas/README.md)
+El repositorio **no copia automáticamente archivos institucionales ni temporales**. Se incorpora conocimiento derivado y material docente cuando corresponde, manteniendo Drive y AVA como fuente de los archivos originales y de los enunciados activos.
 
 ## Regla de organización pedagógica
 
@@ -165,7 +172,7 @@ PDA / RA / IL
 → evaluación cuando corresponda
 ```
 
-`docs/` mantiene la estructura académica canónica. `semanas/` será la vista temporal cuando el cronograma esté disponible. `labs/`, `ejercicios/` y `evaluaciones/` contienen las prácticas y artefactos específicos sin duplicar innecesariamente el contenido curricular.
+`docs/` mantiene la estructura académica canónica. `semanas/` documenta tanto el plan institucional como la ejecución real. `labs/`, `ejercicios/` y `evaluaciones/` contienen las prácticas y artefactos específicos sin duplicar innecesariamente el contenido curricular.
 
 ## Publicación web
 
@@ -184,4 +191,4 @@ La rama `gh-pages` es una superficie derivada; el conocimiento académico se man
 
 ---
 
-> AVA y los canales institucionales continúan siendo la fuente oficial para comunicaciones, instrucciones de evaluación y material que Duoc UC determine gestionar dentro de sus plataformas.
+> AVA y los canales institucionales continúan siendo la fuente oficial para comunicaciones, enunciados activos, instrucciones de evaluación y material que Duoc UC determine gestionar dentro de sus plataformas.
