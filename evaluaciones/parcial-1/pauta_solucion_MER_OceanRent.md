@@ -1,6 +1,6 @@
 # Pauta de solución — Evaluación Parcial N°1 (Forma B): MER "OceanRent"
 
-> **Nota:** Este documento es una propuesta de solución de referencia construida a partir del caso de negocio y las instrucciones entregadas, para usar como pauta de corrección frente a las entregas de los estudiantes (archivo .zip de Oracle SQL Developer Data Modeler + Word de respaldo). No corresponde a la entrega de ningún estudiante en particular.
+> **Nota:** Este documento es una propuesta de solución de referencia construida a partir del caso de negocio y las instrucciones entregadas
 
 ## 1. Entidades y atributos
 
@@ -147,5 +147,3 @@ erDiagram
 | IL/IE 1.4 — relaciones y cardinalidad | ¿Cardinalidad opcional correcta entre Arriendo y Agencia (0,1)? ¿N:M entre Arriendo y Seguro? ¿Agencia (1,N)–Guía (1,1)? |
 | IL/IE 1.5 — relaciones MERE | ¿Especialización Embarcación → Motorizada/A vela (total y disjunta)? ¿Alguna forma de resolver que la licencia pertenece a un patrón de nave o a un guía náutico, no a ambos? |
 
----
-**Supuestos declarados** (por ambigüedad razonable del enunciado, típica de un caso de examen): PK de Empleado asumida como RUN; Kit_Seguridad y Seguro_Navegación modelados como entidades catálogo en vez de atributos simples — ambas son decisiones de diseño válidas y los estudiantes pueden justificar variantes razonables.
