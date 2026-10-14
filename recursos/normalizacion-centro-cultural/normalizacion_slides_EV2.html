@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BDY1101 · EV2 · Normalización con talleres</title>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0b1021;--panel:#16213b;--panel2:#101b31;--cyan:#62e6cf;--yellow:#ffca70;--text:#eaf0ff;--muted:#a8bbd8;--line:#42526b;
+}
+*{box-sizing:border-box}
+body{margin:0;font:clamp(17px,1.35vw,23px)/1.6 system-ui,Segoe UI,sans-serif;background:radial-gradient(circle at 86% 4%,#143e52,var(--bg) 45%);color:var(--text)}
+header{position:fixed;z-index:5;left:0;right:0;top:0;padding:10px 3vw;display:flex;justify-content:space-between;align-items:center;background:#0b1021eb;border-bottom:1px solid var(--line)}
+button{font:inherit;cursor:pointer;background:var(--panel);border:1px solid #526985;color:white;padding:8px 13px;border-radius:10px}
+button:hover,button:focus{border-color:var(--cyan)}
+main{padding:85px 5vw 80px;max-width:1320px;margin:auto}
+.slide{display:none;min-height:calc(100vh - 175px);align-content:center}
+.slide.active{display:block}
+h1{font-size:clamp(42px,5vw,75px);line-height:1.1;margin:0 0 24px}
+h2{font-size:clamp(33px,3.5vw,54px);line-height:1.15;margin:0 0 18px;color:var(--cyan)}
+h3{font-size:1.25em;color:var(--yellow);margin-top:0}
+p{margin:0 0 12px}
+ul{margin:0 0 0 1.1em;padding:0}
+li{margin-bottom:8px}
+.lede{font-size:1.28em;max-width:940px}
+.tag{color:var(--yellow);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.75em}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.grid.after-table,.stack.after-table{margin-top:28px}
+.stack{display:flex;gap:18px;flex-wrap:wrap}
+.stack .panel{flex:1;min-width:250px}
+.panel{background:#16213bea;padding:22px 26px;border:1px solid #3d506d;border-radius:16px}
+.warn{border-left:5px solid #ef8d82}
+.good{border-left:5px solid var(--cyan)}
+.info{border-left:5px solid var(--yellow)}
+.big{font-size:1.18em}
+.big2{font-size:1.28em}
+table{border-collapse:collapse;width:100%;font-size:.84em;background:#101b31;margin:18px 0 0}
+th,td{padding:11px 13px;border:1px solid #455671;text-align:left;vertical-align:top}
+th{background:#24385c}
+code{background:#293b56;padding:2px 5px;border-radius:5px;color:#e4ffc2}
+.small{font-size:.82em;color:var(--muted)}
+.foot{position:fixed;bottom:0;left:0;right:0;padding:10px 3vw;background:#0b1021e8;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #41506d}
+strong{color:var(--yellow)}
+.answer{display:none;margin-top:14px;padding:14px 16px;background:#14443f;border-radius:10px}.answer.show{display:block}
+.sample{font-family:ui-monospace,Consolas,monospace;font-size:.88em}
+kbd{padding:2px 7px;border:1px solid #78839a;border-radius:5px}
+.caseid{display:inline-block;border:1px solid #65e6cf;border-radius:999px;padding:4px 13px;color:#65e6cf;font-size:.7em;font-weight:800;letter-spacing:.08em}
+.compact td,.compact th{padding:8px 10px}
+.accent{color:var(--cyan)}
+.diagram{font-size:1.06em;line-height:2}
+.hint{border-left:4px solid var(--yellow);padding-left:18px;margin-top:16px}
+.scrollx{overflow-x:auto}
+.keybox{background:#10192d;border:1px dashed #577396;padding:12px 14px;border-radius:10px;margin-top:10px}
+.twocol{columns:2;column-gap:32px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.twocol{columns:1}.slide{min-height:74vh}}
+@media(max-width:700px){h1{font-size:2.15em}h2{font-size:1.8em}main{padding-left:4vw;padding-right:4vw}table{font-size:.69em}th,td{padding:7px}.stack{gap:12px}}
+@media print{header,.foot,button{display:none}.slide{display:block;page-break-after:always;min-height:auto;padding:1cm 0}body{background:white;color:#102030}.panel,table{color:#102030;background:white}h2{color:#007465}.answer{display:block}}
+</style>
+</head>
+<body>
+<header><div>BDY1101 · EV2 · Caso: inscripción a talleres</div><div><button id="prev" aria-label="Diapositiva anterior">←</button> <span id="progress">1 / 20</span> <button id="next" aria-label="Siguiente diapositiva">→</button></div></header>
+<main>
+
+<section class="slide">
+  <div class="tag">BDY1101 · EV2 · Repaso guiado</div>
+  <h1>Normalización <span class="accent">paso a paso</span></h1>
+  <p class="lede">Un caso sencillo, completo y no trillado: partimos desde una ficha mal organizada y llegamos a un modelo en 3FN entendiendo <strong>qué problema corrige cada paso</strong>.</p>
+  <div class="panel good">
+    <p class="big">Objetivo de hoy: que el curso pueda <strong>explicar con sus palabras</strong> por qué se separan datos en distintas entidades, y no solo repetir “1FN, 2FN y 3FN” de memoria.</p>
+  </div>
+  <p class="small">Navega con ← → o con los botones superiores · Hay respuestas ocultas para discusión · También se puede imprimir como PDF.</p>
+</section>
+
+<section class="slide">
+  <div class="caseid">CASO CONDUCTOR</div>
+  <h2>Centro cultural “La Estación”</h2>
+  <p class="lede">El centro cultural registra estudiantes que se inscriben en talleres. Cada taller se imparte en una sala determinada y las inscripciones se toman usando una ficha bastante artesanal.</p>
+  <div class="grid after-table">
+    <div class="panel">
+      <h3>Reglas del negocio para este ejemplo</h3>
+      <ul>
+        <li>Cada estudiante posee un identificador único.</li>
+        <li>Cada taller tiene un código único y un nombre.</li>
+        <li>Cada sala tiene un código único y un nombre.</li>
+        <li>Cada taller se realiza en una sala asignada.</li>
+        <li>Para simplificar el ejemplo, una persona se inscribe una sola vez por taller.</li>
+      </ul>
+    </div>
+    <div class="panel info">
+      <h3>¿Por qué este caso sirve?</h3>
+      <p>Porque permite mostrar las tres ideas principales de la normalización:</p>
+      <ul>
+        <li><strong>1FN:</strong> eliminar grupos repetitivos.</li>
+        <li><strong>2FN:</strong> quitar atributos que dependen solo de parte de una clave compuesta.</li>
+        <li><strong>3FN:</strong> separar atributos que dependen de otro atributo y no directamente de la clave principal.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>0 · Así llega la ficha</h2>
+  <p class="big">Partimos desde una <strong>vista de usuario</strong>, no desde tablas perfectas. Ese es el punto de partida real del modelamiento.</p>
+  <div class="scrollx">
+    <table>
+      <tr><th>ID estudiante</th><th>Nombre</th><th>Talleres inscritos</th><th>Salas de esos talleres</th></tr>
+      <tr><td>E01</td><td>Ana Rojas</td><td>T10 Dibujo; T20 Guitarra</td><td>S1 Arte; S2 Música</td></tr>
+      <tr><td>E02</td><td>Leo Soto</td><td>T10 Dibujo</td><td>S1 Arte</td></tr>
+    </table>
+  </div>
+  <div class="grid after-table">
+    <div class="panel warn">
+      <h3>¿Qué falla aquí?</h3>
+      <p>No tenemos un valor simple por columna. En una sola celda aparecen <strong>varios talleres</strong> y en otra celda aparecen <strong>varias salas</strong>.</p>
+      <p>Además, esas dos listas deben mantenerse sincronizadas. Si una lista se actualiza y la otra no, el dato queda inconsistente.</p>
+    </div>
+    <div class="panel info">
+      <h3>Problemas concretos que genera</h3>
+      <ul>
+        <li>Cuesta consultar “¿quién está en Guitarra?” porque el dato está mezclado en texto.</li>
+        <li>Cuesta eliminar solo una inscripción sin tocar las demás.</li>
+        <li>Si cambia la sala de un taller, puede haber que editar muchas fichas.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Antes de normalizar: detectar el tipo de problema</h2>
+  <div class="stack">
+    <div class="panel">
+      <h3>Grupo repetitivo</h3>
+      <p>Cuando un mismo atributo trae <strong>varios valores a la vez</strong> dentro de una fila, normalmente todavía no estamos en 1FN.</p>
+    </div>
+    <div class="panel">
+      <h3>Dependencia parcial</h3>
+      <p>Cuando una tabla usa una <strong>clave compuesta</strong> y algunos atributos dependen solo de una parte de esa clave, se rompe 2FN.</p>
+    </div>
+    <div class="panel">
+      <h3>Dependencia transitiva</h3>
+      <p>Cuando un atributo depende de otro atributo no clave, y no directamente de la PK, se rompe 3FN.</p>
+    </div>
+  </div>
+  <p class="hint">Normalizar no es “partir tablas porque sí”. Es identificar qué dato pertenece realmente a cada cosa del negocio.</p>
+</section>
+
+<section class="slide">
+  <h2>1FN · Una inscripción por fila</h2>
+  <p class="big">La primera forma normal exige que cada intersección fila/columna contenga un valor <strong>atómico</strong>, es decir, un solo dato del tipo esperado.</p>
+  <div class="scrollx">
+    <table class="compact">
+      <tr><th>id_estudiante</th><th>nombre</th><th>id_taller</th><th>taller</th><th>id_sala</th><th>sala</th><th>fecha</th></tr>
+      <tr><td>E01</td><td>Ana</td><td>T10</td><td>Dibujo</td><td>S1</td><td>Arte</td><td>04/10</td></tr>
+      <tr><td>E01</td><td>Ana</td><td>T20</td><td>Guitarra</td><td>S2</td><td>Música</td><td>05/10</td></tr>
+      <tr><td>E02</td><td>Leo</td><td>T10</td><td>Dibujo</td><td>S1</td><td>Arte</td><td>06/10</td></tr>
+    </table>
+  </div>
+  <div class="grid after-table">
+    <div class="panel good">
+      <h3>Lo que ya solucionamos</h3>
+      <ul>
+        <li>Cada fila representa <strong>una sola inscripción</strong>.</li>
+        <li>Ya no hay listas escondidas dentro de una celda.</li>
+        <li>Ahora sí podemos filtrar, ordenar y contar inscripciones correctamente.</li>
+      </ul>
+    </div>
+    <div class="panel warn">
+      <h3>Lo que todavía está mal</h3>
+      <ul>
+        <li>El nombre del estudiante se repite en todas sus inscripciones.</li>
+        <li>El nombre del taller se repite en cada fila donde aparece.</li>
+        <li>La sala también se repite una y otra vez.</li>
+      </ul>
+      <p>Por eso 1FN es una mejora importante, pero todavía no es el diseño final.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>¿Cuál podría ser la clave en 1FN?</h2>
+  <p>En este punto, la fila representa una inscripción. Como un estudiante puede aparecer muchas veces y un taller también puede aparecer muchas veces, necesitamos una combinación que identifique la fila.</p>
+  <div class="panel good">
+    <p class="big2">En este caso, una opción razonable es usar la clave compuesta <code>(id_estudiante, id_taller)</code>.</p>
+  </div>
+  <div class="grid after-table">
+    <div class="panel">
+      <h3>¿Por qué no basta con id_estudiante?</h3>
+      <p>Porque Ana puede estar inscrita en Dibujo y también en Guitarra. Entonces <code>id_estudiante</code> se repite.</p>
+    </div>
+    <div class="panel">
+      <h3>¿Por qué no basta con id_taller?</h3>
+      <p>Porque un mismo taller puede tener muchos estudiantes. Entonces <code>id_taller</code> también se repite.</p>
+    </div>
+  </div>
+  <p class="small">Ojo: esta clave funciona solo bajo la regla simplificada del ejemplo. Si el negocio permitiera varias ediciones del mismo taller, habría que revisar el identificador.</p>
+</section>
+
+<section class="slide">
+  <h2>Analizar dependencias: ¿de quién depende cada dato?</h2>
+  <div class="stack">
+    <div class="panel">
+      <h3>Datos del estudiante</h3>
+      <p class="sample"><code>id_estudiante → nombre</code></p>
+      <p>Conocer el código E01 ya nos permite saber quién es Ana. Ese dato no depende del taller, sino del estudiante.</p>
+    </div>
+    <div class="panel">
+      <h3>Datos del taller</h3>
+      <p class="sample"><code>id_taller → nombre_taller, id_sala, nombre_sala</code></p>
+      <p>El código T10 ya nos dice que se trata del taller Dibujo y además nos orienta a su sala asignada.</p>
+    </div>
+    <div class="panel">
+      <h3>Datos de la inscripción</h3>
+      <p class="sample"><code>(id_estudiante, id_taller) → fecha</code></p>
+      <p>La fecha pertenece al hecho de que un estudiante se inscribió en un taller específico.</p>
+    </div>
+  </div>
+  <p class="hint">Este análisis es la antesala de 2FN: separar lo que depende del estudiante, lo que depende del taller y lo que depende de la relación entre ambos.</p>
+</section>
+
+<section class="slide">
+  <h2>2FN · Quitar dependencias parciales</h2>
+  <p class="big">La segunda forma normal aplica cuando existe una clave compuesta. Pide que todos los atributos no clave dependan de <strong>la clave completa</strong> y no de una sola parte.</p>
+  <div class="grid after-table">
+    <div class="panel warn">
+      <h3>¿Qué rompe 2FN en nuestra tabla?</h3>
+      <p class="sample">Inscripcion(id_estudiante, <em>nombre_estudiante</em>, id_taller, <em>nombre_taller</em>, id_sala, nombre_sala, fecha)</p>
+      <ul>
+        <li><code>nombre_estudiante</code> depende solo de <code>id_estudiante</code>.</li>
+        <li><code>nombre_taller</code> depende solo de <code>id_taller</code>.</li>
+        <li><code>id_sala</code> y <code>nombre_sala</code> también están amarrados al taller.</li>
+      </ul>
+    </div>
+    <div class="panel good">
+      <h3>¿Qué hacemos entonces?</h3>
+      <p>Separamos las “cosas” del negocio:</p>
+      <p class="sample">Estudiante(<strong>id_estudiante</strong>, nombre)</p>
+      <p class="sample">Taller(<strong>id_taller</strong>, nombre_taller, id_sala, nombre_sala)</p>
+      <p class="sample">Inscripcion(<strong>id_estudiante</strong>, <strong>id_taller</strong>, fecha)</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>¿Qué ganamos al pasar a 2FN?</h2>
+  <div class="stack">
+    <div class="panel good">
+      <h3>Menos redundancia</h3>
+      <p>El nombre de Ana ya no se repite en todas las inscripciones de Ana. Se guarda una sola vez en <strong>Estudiante</strong>.</p>
+    </div>
+    <div class="panel good">
+      <h3>Menos riesgo de inconsistencias</h3>
+      <p>Si el nombre del taller cambia de “Guitarra” a “Guitarra Inicial”, ya no hay que buscarlo repetido en muchas filas de inscripciones.</p>
+    </div>
+    <div class="panel warn">
+      <h3>Pero aún no terminamos</h3>
+      <p>En la tabla <strong>Taller</strong> todavía guardamos información de la sala, que en realidad pertenece a otra entidad con identidad propia.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>3FN · Detectar la dependencia transitiva</h2>
+  <p>Ahora miramos la tabla <strong>Taller</strong> y nos preguntamos: ¿todos sus atributos dependen directamente de <code>id_taller</code>?</p>
+  <div class="panel warn">
+    <h3>Problema</h3>
+    <p class="sample">Taller(<strong>id_taller</strong>, nombre_taller, id_sala, nombre_sala)</p>
+    <p class="big"><code>id_taller → id_sala → nombre_sala</code></p>
+    <p>El taller nos lleva a la sala, y la sala nos lleva a su nombre. Por lo tanto, <code>nombre_sala</code> no depende directamente del taller: depende de <code>id_sala</code>. Eso es una <strong>dependencia transitiva</strong>.</p>
+  </div>
+  <div class="keybox">
+    <strong>Idea clave:</strong> cuando una tabla guarda atributos propios de otra entidad, está escondiendo una tabla que todavía no hemos creado.
+  </div>
+</section>
+
+<section class="slide">
+  <h2>3FN · La corrección</h2>
+  <div class="grid after-table">
+    <div class="panel good">
+      <h3>Nueva entidad</h3>
+      <p class="sample">Sala(<strong>id_sala</strong>, nombre_sala)</p>
+      <p>La sala ahora tiene identidad propia y concentra su información en un solo lugar.</p>
+    </div>
+    <div class="panel good">
+      <h3>Tabla Taller corregida</h3>
+      <p class="sample">Taller(<strong>id_taller</strong>, nombre_taller, <strong>id_sala</strong> FK)</p>
+      <p>El taller conserva solo la referencia a la sala. Ya no arrastra datos descriptivos que le pertenecen a otra entidad.</p>
+    </div>
+  </div>
+  <p class="hint">Si mañana la sala S1 cambia su nombre de “Arte” a “Laboratorio Creativo”, solo se modifica una fila en Sala.</p>
+</section>
+
+<section class="slide">
+  <h2>Modelo final · 3FN</h2>
+  <div class="grid">
+    <div class="panel">
+      <h3>Entidades resultantes</h3>
+      <p><strong>ESTUDIANTE</strong><br><code>id_estudiante</code> PK · nombre</p>
+      <p><strong>SALA</strong><br><code>id_sala</code> PK · nombre_sala</p>
+      <p><strong>TALLER</strong><br><code>id_taller</code> PK · nombre_taller · <code>id_sala</code> FK</p>
+      <p><strong>INSCRIPCION</strong><br><code>id_estudiante</code> PK/FK · <code>id_taller</code> PK/FK · fecha</p>
+    </div>
+    <div class="panel good">
+      <h3>Cardinalidades</h3>
+      <div class="diagram">
+        SALA <strong>1 : N</strong> TALLER<br>
+        ESTUDIANTE <strong>1 : N</strong> INSCRIPCION<br>
+        TALLER <strong>1 : N</strong> INSCRIPCION
+      </div>
+      <p>Mirado globalmente, <strong>Estudiante</strong> y <strong>Taller</strong> se relacionan de forma <strong>N:M</strong>. Esa relación se resuelve mediante la entidad intermedia <strong>Inscripcion</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>La evolución completa, de un vistazo</h2>
+  <div class="stack">
+    <div class="panel warn"><div class="tag">ORIGEN</div><h3>Ficha desordenada</h3><p>Listas de talleres y salas dentro de una misma fila por estudiante.</p><p class="small">Problema principal: grupos repetitivos y datos difíciles de consultar.</p></div>
+    <div class="panel"><div class="tag">1FN</div><h3>Filas atómicas</h3><p>Una fila por inscripción.</p><p class="small">Problema pendiente: mucha repetición y mezcla de responsabilidades.</p></div>
+    <div class="panel"><div class="tag">2FN</div><h3>Separar estudiante, taller e inscripción</h3><p>Cada atributo queda más cerca de la entidad a la que realmente pertenece.</p><p class="small">Problema pendiente: la sala sigue escondida dentro de Taller.</p></div>
+    <div class="panel good"><div class="tag">3FN</div><h3>Separar Sala</h3><p>Se elimina la dependencia transitiva y el modelo queda coherente con el negocio.</p><p class="small">Resultado: menos redundancia, menos inconsistencias y más claridad.</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Anomalías que evitamos al normalizar</h2>
+  <div class="grid">
+    <div class="panel warn">
+      <h3>Anomalía de actualización</h3>
+      <p>Si la sala “Arte” cambia de nombre, en el diseño malo tendríamos que actualizar muchas filas. Eso aumenta el riesgo de dejar algunas con el nombre viejo.</p>
+    </div>
+    <div class="panel warn">
+      <h3>Anomalía de inserción</h3>
+      <p>Podría costar registrar un taller nuevo si aún no hay estudiantes inscritos, porque la estructura gira solo en torno a la ficha del estudiante.</p>
+    </div>
+    <div class="panel warn">
+      <h3>Anomalía de eliminación</h3>
+      <p>Si borramos la última inscripción de un taller, podríamos perder accidentalmente la información del taller o de su sala.</p>
+    </div>
+    <div class="panel good">
+      <h3>Mensaje importante</h3>
+      <p>La normalización no es un capricho académico: existe para reducir justamente estos problemas de operación y calidad de datos.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Desafío 1 · Detectar 1FN</h2>
+  <div class="panel">
+    <p class="big">Un nuevo estudiante aparece con <code>talleres = "T10, T20, T30"</code> y <code>salas = "S1, S2, S4"</code>.</p>
+    <p>¿Cuál es el problema estructural? ¿Cómo lo corregirías sin saltar todavía a 2FN o 3FN?</p>
+  </div>
+  <button class="reveal">Mostrar solución razonada</button>
+  <div class="answer">El problema es un <strong>grupo repetitivo</strong>: una misma columna contiene varios valores. Para llevarlo a 1FN debemos registrar <strong>una fila por inscripción</strong>. En esa primera etapa todavía podría repetirse la información general del estudiante; eso se corrige después en 2FN.</div>
+</section>
+
+<section class="slide">
+  <h2>Desafío 2 · Detectar 2FN</h2>
+  <div class="panel">
+    <p class="sample">Inscripcion(id_estudiante, id_taller, nombre_estudiante, fecha)</p>
+    <p>La PK es <code>(id_estudiante, id_taller)</code>. ¿Qué atributo no depende de la clave completa y por qué?</p>
+  </div>
+  <button class="reveal">Mostrar solución razonada</button>
+  <div class="answer"><code>nombre_estudiante</code> depende solo de <code>id_estudiante</code>, no de la combinación completa. Por eso debe salir de Inscripcion y pasar a una entidad propia: <strong>Estudiante</strong>. El atributo <code>fecha</code>, en cambio, sí puede quedar en <strong>Inscripcion</strong> porque pertenece al hecho de inscribirse en un taller concreto.</div>
+</section>
+
+<section class="slide">
+  <h2>Desafío 3 · Detectar 3FN</h2>
+  <div class="panel">
+    <p class="sample">Taller(id_taller, nombre_taller, id_sala, nombre_sala)</p>
+    <p>Si todas las salas tienen código y nombre propios, ¿qué dependencia aparece y cómo se corrige?</p>
+  </div>
+  <button class="reveal">Mostrar solución razonada</button>
+  <div class="answer">Aparece la dependencia transitiva <code>id_taller → id_sala → nombre_sala</code>. Se corrige creando la entidad <strong>Sala(id_sala, nombre_sala)</strong> y dejando solo <code>id_sala</code> como FK dentro de <strong>Taller</strong>.</div>
+</section>
+
+<section class="slide">
+  <h2>Bonus · Cuando cambian las reglas del negocio</h2>
+  <div class="panel info">
+    <p class="big">Supongamos que el centro permite que Ana curse <strong>Dibujo en 2026 y otra vez en 2027</strong>. ¿Sigue siendo suficiente la PK <code>(id_estudiante, id_taller)</code>?</p>
+  </div>
+  <button class="reveal">Mostrar análisis</button>
+  <div class="answer">No necesariamente. Ahora una misma pareja estudiante-taller podría repetirse en años distintos. Eso obliga a revisar el identificador: podríamos ampliar la clave con un período/edición, o crear un <code>id_inscripcion</code> propio y acompañarlo con una restricción de unicidad según las reglas del negocio. <strong>Modelar bien también significa entender el dominio</strong>.</div>
+</section>
+
+<section class="slide">
+  <h2>Conectar EV2 con el taller de APEX</h2>
+  <div class="grid">
+    <div class="panel good">
+      <h3>Lo que sí corresponde a EV2</h3>
+      <ul>
+        <li>Comprender las dependencias.</li>
+        <li>Justificar entidades y relaciones.</li>
+        <li>Reconocer PK y FK a nivel conceptual.</li>
+        <li>Explorar el entorno de APEX y su lógica general.</li>
+        <li>Crear las páginas base que pide el taller.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Lo que podemos dejar para EV3</h3>
+      <ul>
+        <li>Implementar tablas físicas.</li>
+        <li>Escribir SQL de creación e inserción.</li>
+        <li>Poblar datos.</li>
+        <li>Hacer consultas y reportes sobre un esquema propio.</li>
+      </ul>
+      <p><strong>No hace falta adelantar esa capa hoy.</strong></p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Ticket de salida</h2>
+  <div class="panel good">
+    <p class="big">Si el curso puede responder estas cuatro preguntas, entendió la lógica del caso:</p>
+    <p>1. ¿Qué grupo repetitivo rompimos para llegar a 1FN?</p>
+    <p>2. ¿Qué datos tenían dependencia parcial antes de 2FN?</p>
+    <p>3. ¿Qué dependencia transitiva eliminamos para llegar a 3FN?</p>
+    <p>4. ¿Por qué existe <strong>Inscripcion</strong> como entidad intermedia entre Estudiante y Taller?</p>
+  </div>
+  <p class="lede">La meta del repaso no es recitar definiciones, sino <strong>explicar por qué el modelo final tiene esa forma</strong>. 🎯</p>
+</section>
+
+</main>
+<footer class="foot"><span>1FN → 2FN → 3FN · <span class="small">← → · Inicio / Fin</span></span><span id="bar"></span></footer>
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+let current=0;
+function show(n){
+  current=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,i)=>s.classList.toggle('active',i===current));
+  document.querySelector('#progress').textContent=`${current+1} / ${slides.length}`;
+  document.querySelector('#bar').textContent='▰'.repeat(current+1)+'▱'.repeat(slides.length-current-1);
+  window.scrollTo(0,0)
+}
+document.querySelector('#prev').onclick=()=>show(current-1);
+document.querySelector('#next').onclick=()=>show(current+1);
+document.addEventListener('keydown',e=>{
+  if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(current+1)}
+  if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(current-1)}
+  if(e.key==='Home')show(0);
+  if(e.key==='End')show(slides.length-1)
+});
+document.querySelectorAll('.reveal').forEach(b=>b.onclick=()=>b.nextElementSibling.classList.toggle('show'));
+show(0);
+</script>
+</body>
+</html>
