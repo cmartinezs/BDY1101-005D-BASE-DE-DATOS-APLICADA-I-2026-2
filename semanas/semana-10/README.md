@@ -9,8 +9,9 @@
 
 ## Material docente
 
-1. [Normalización 1FN–3FN: Centro Cultural La Estación](../../recursos/normalizacion-centro-cultural/README.md). Caso único de inscripción a talleres, con ejemplos, problemas y ejercicios.
-2. [Guía autónoma de introducción a Oracle APEX](../../labs/introduccion-oracle-apex-ea2/README.md). Recorrido sin creación física de tablas ni SQL.
+1. [Presentación HTML de normalización (20 diapositivas)](../../recursos/normalizacion-centro-cultural/normalizacion_slides_EV2.html).
+2. [Normalización 1FN–3FN: Centro Cultural La Estación](../../recursos/normalizacion-centro-cultural/README.md). Caso único de inscripción a talleres, con ejemplos, problemas y ejercicios.
+3. [Guía autónoma de introducción a Oracle APEX](../../labs/introduccion-oracle-apex-ea2/README.md). Recorrido sin creación física de tablas ni SQL.
 
 ## Secuencia sugerida de clase
 
