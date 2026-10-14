@@ -2,6 +2,8 @@
 
 **BDY1101 · EA2 / EV2 · Caso docente de repaso, sin SQL.**
 
+[**Abrir presentación interactiva HTML (20 diapositivas)**](./normalizacion_slides_EV2.html)
+
 ## Objetivo
 
 A partir de una ficha de inscripciones, reconocer grupos repetitivos, dependencias parciales y dependencias transitivas. Explicar cómo cambia el modelo desde una estructura inicial hasta tercera forma normal, y justificar las claves y relaciones.
